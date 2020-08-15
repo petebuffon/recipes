@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+    <div class="text-danger">
+        {% if errors %}
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div style="justify-content: space-evenly;" class="container p-3 d-flex">
+        <a href="/share/{{ recipe.recipe_id }}" class="btn btn-info" role="button">Share</a>
+        <a href="/download/{{ recipe.recipe_id }}.txt" download type="text/plain" class="btn btn-info" role="button">Download</a>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+            Delete
+        </button>
+    </div>
+    <h1 class="py-3">{{ recipe.title }}</h1>
+    <form method="POST" action="/edit/{{ recipe.recipe_id }}">
+        <div class="form-group form-flex">
+            {{ form.csrf_token }}
+            {{ form.title(class="form-control form-fill", placeholder="Title", autocomplete="off", autofocus=True, required=True, minlength=4, value=recipe.title) }}
+        </div>
+        <div class="form-group form-flex">
+            {% if recipe.servings %}
+                {{ form.servings(class="form-control form-fill", placeholder="Servings", value=recipe.servings) }}
+            {% else %}
+                {{ form.servings(class="form-control form-fill", placeholder="Servings") }}
+            {% endif %}
+        </div>
+        <div class="form-group form-flex">
+            {% if recipe.source %}
+                {{ form.source(class="form-control form-fill", placeholder="Source", value=recipe.source) }}
+            {% else %}
+                {{ form.source(class="form-control form-fill", placeholder="Source") }}
+            {% endif %}
+        </div>
+        <div class="py-3">
+        <h5>Categories</h5>
+        {% for category in categories %}
+        <div class="form-check form-check-inline">
+            {% if category in checked %}
+                <input class="form-check-input" name ="{{ category }}" type="checkbox" id="{{ category }}" checked>
+            {% else %}
+                <input class="form-check-input" name ="{{ category }}" type="checkbox" id="{{ category }}">
+            {% endif %}
+            <label class="form-check-label" for="{{ category }}">
+              {{ category }}
+            </label>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+        <div class="form-group form-flex">
+            {% if recipe.notes %}
+                {{ form.notes(class="form-control form-fill", style="height: 100px;", placeholder="Notes", value=recipe.notes) }}
+            {% else %}
+                {{ form.notes(class="form-control form-fill", style="height: 100px;", placeholder="Notes") }}
+            {% endif %}
+        </div>
+        <div class="form-group form-flex">
+            {{ form.ingredients(class="form-control form-fill", style="height: 200px;", placeholder="Ingredients", required=True, value=ingredients) }}
+        </div>
+        <div class="form-group form-flex">
+            {{ form.directions(class="form-control form-fill", style="height: 200px;") }}
+        </div>
+        <button class="btn btn-primary" type="submit">Edit</button>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you really want to delete this recipe?  This process cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="/delete/{{ recipe.recipe_id }}" class="btn btn-danger" role="button">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

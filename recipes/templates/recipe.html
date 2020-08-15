@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipe
+{% endblock %}
+
+{% block main %}
+    <div style="justify-content: space-between; align-items: center;" class="container d-flex">
+        <h1 style="visibility: hidden;"></h1>
+        <h1 class="p-3">{{ recipe["title"] }}</h1>
+        <a href="/edit/{{ recipe.recipe_id }}" class="btn btn-info" role="button">Edit</a>
+    </div>
+    
+    <hr>
+    {% if recipe["notes"] %}
+        <p>{{ recipe["notes"] }}</p>
+    {% endif %}
+    <div class="ingredients">
+        {% for ingredient in ingredients %}
+            <p>{{ ingredient["ingredient"] }}</p>
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="directions pt-3">
+        {% for step in directions %}
+            <p>{{ step }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

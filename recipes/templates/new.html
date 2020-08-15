@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <div class="text-danger">
+        {% if form.servings.errors %}
+        {% for error in form.servings.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+
+        {% if form.errors %}
+        {% for error in form.servings.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+
+        {% if errors %}
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <form method="POST" action="/new">
+        <div class="form-group form-flex">
+            {{ form.csrf_token }}
+            {{ form.title(class="form-control form-fill", placeholder="Title", autocomplete="off", autofocus=True, required=True, minlength=4) }}
+        </div>
+        <div class="form-group form-flex">
+            {{ form.servings(class="form-control form-fill", placeholder="Servings") }}
+        </div>
+        <div class="form-group form-flex">
+            {{ form.source(class="form-control form-fill", placeholder="Source") }}
+        </div>
+        <div class="py-3">
+        <h5>Categories</h5>
+        {% for category in categories %}
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" name ="{{ category }}" type="checkbox" id="{{ category }}">
+            <label class="form-check-label" for="{{ category }}">
+              {{ category }}
+            </label>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+        <div class="form-group form-flex">
+            {{ form.notes(class="form-control form-fill", style="height: 100px;", placeholder="Notes") }}
+        </div>
+        <div class="form-group form-flex">
+            {{ form.ingredients(class="form-control form-fill", style="height: 200px;", placeholder="Ingredients", required=True) }}
+        </div>
+        <div class="form-group form-flex">
+            {{ form.directions(class="form-control form-fill", style="height: 200px;", placeholder="Directions", required=True) }}
+        </div>
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+{% endblock %}

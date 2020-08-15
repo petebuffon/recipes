@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipes
+{% endblock %}
+
+{% block main %}
+    <form class="py-3" method="POST" action="/">
+        <div style="display: flex;" class="form-group search-bar">
+            {{ form.csrf_token }}
+            {{ form.search(style="flex: 1;", class="form-control mr-sm-2", type="search", placeholder="Search", **{"aria-label": "Search"}) }}
+            {{ form.select(class="form-control") }}
+            <button class="btn btn-outline-secondary ml-2 my-2 my-sm-0" type="submit">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                </svg>
+            </button>
+        </div>
+    </form>
+    <div class="py-3">
+        <h2 style="font-family: serif;" class="py-1">Meal Type</h2>
+        <ul class="list-group list-group-flush">
+            <a href="/search?category=breakfast&page=1" class="list-group-item list-group-item-action">🍳 Breakfast</a>
+            <a href="/search?category=main&page=1" class="list-group-item list-group-item-action">🍲 Main</a>
+            <a href="/search?category=salad&page=1" class="list-group-item list-group-item-action">🥗 Salad</a>
+            <a href="/search?category=side&page=1" class="list-group-item list-group-item-action">🧀 Side</a>
+            <a href="/search?category=dessert&page=1" class="list-group-item list-group-item-action">🍰 Dessert</a>
+            <a href="/search?category=drink&page=1" class="list-group-item list-group-item-action">🥃 Drink</a>
+        </ul>
+    </div>
+    <div class="py-3">
+        <h2 style="font-family: serif;" class="py-1">Protein</h2>
+        <ul class="list-group list-group-flush">
+            <a href="/search?category=poultry&page=1" class="list-group-item list-group-item-action">🍗 Poultry</a>
+            <a href="/search?category=beef&page=1" class="list-group-item list-group-item-action">🥩 Beef</a>
+            <a href="/search?category=pork&page=1" class="list-group-item list-group-item-action">🥓 Pork</a>
+            <a href="/search?category=seafood&page=1" class="list-group-item list-group-item-action">🐟 Seafood</a>
+            <a href="/search?category=veggie&page=1" class="list-group-item list-group-item-action">🥑 Veggie</a>
+        </ul>
+    </div>
+{% endblock %}

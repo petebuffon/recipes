@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <div class="text-danger">
+        {% if form.password.errors %}
+        {% for error in form.password.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        {% if errors %}
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <form method="POST" action="/register" class="needs-validation">
+        <div class="form-group is-invalid">
+            {{ form.csrf_token }}
+            {{ form.username(class_="form-control", placeholder="Username", autocomplete="off", autofocus=True, required=True, minlength=4) }}
+        </div>
+        <div class="form-group">
+            {{ form.password(class_="form-control", placeholder="Password", required=True, minlength=8) }}
+            {{ form.confirm(class_="form-control", placeholder="Confirm") }}
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,123 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand
+{
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+h1
+{
+    font-family: "Serif"
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main .form-wide
+{
+    display: inline-block;
+    width: 75%;
+}
+
+small
+{
+    text-align: left;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.ingredients
+{
+    margin: auto;
+    width: 90%;
+    column-count: 2;
+    font-size: 1.2 rem;
+    font-family: sans-serif;
+    color: #e67e22;
+    text-align: left;
+}
+
+.directions
+{
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 2;
+    font-family: serif;
+    color: #121212;
+}
+
+hr
+{
+    width: 100%;
+    background-color: #121212;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 800px;
+    }
+}
+
+.form-flex
+{
+    display: flex;
+}
+
+.form-fill
+{
+    flex-grow: 1;
+}
+
+.list-group-flush > a
+{
+    font-size: 1.4rem;
+}
+
+@media (max-width: 650px) {
+
+    .search-bar
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.search-table
+{
+    height: 100vh;
+}
+
+a {
+    color: #121212;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #121212;
+    text-decoration: underline;
+}

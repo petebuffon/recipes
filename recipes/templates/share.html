@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Share
+{% endblock %}
+
+{% block main %}
+    <h3 class="py-3">This text can be submitted into the import form of another recipes server.</h3>
+    <p style="word-break: break-all; text-align: left;">
+        {{ encoded }}
+    </p>
+{% endblock %}

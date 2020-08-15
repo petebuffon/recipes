@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Import
+{% endblock %}
+
+{% block main %}
+<div class="text-danger">
+    {% if errors %}
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+    <form method="POST" action="/import">
+        <div class="form-group form-flex">
+            {{ form.csrf_token }} 
+            {{ form.encoded(class="form-control form-fill", style="height: 400px;", placeholder="Encoded", required=True) }}
+        </div>
+        <button class="btn btn-primary" type="submit">Import</button>
+    </form>
+{% endblock %}

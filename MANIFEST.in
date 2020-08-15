@@ -1,0 +1,2 @@
+recursive-include recipes/templates *
+recursive-include recipes/static *
