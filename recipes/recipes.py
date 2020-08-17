@@ -54,11 +54,11 @@ def index():
     return render_template("index.html", form=form)
 
 
-@app.route("/help")
+@app.route("/docs")
 @login_required
-def help():
-    """Help page."""
-    return render_template("help.html")
+def docs():
+    """Docs page."""
+    return render_template("docs.html")
 
 
 @app.route("/delete/<recipe_id>")

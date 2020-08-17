@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Docs
+{% endblock %}
+
+{% block main %}
+<div class="help">
+    <h1>Documentation</h1>
+    <hr>
+    <p>
+        Store your recipes quickly and easily with the Recipes app.
+    </p>
+    <p>
+        Input your favorite recipes in an easy to use form and display them beautifully on the web.
+        Recipes can be edited and deleted at any time.
+        A Powerful search feature allows you to find recipes easily based on title, category, or ingredient.
+        Want to share a recipe with a friend who also uses Recipes? Use the share function to generate a base64 token.
+        Take your recipes with you!  With a single click all recipes can be exported as plaintext files.
+
+        Recipes is written in Python utilizing flask as a web framework, SQLite as a database, and Gunicorn as a web
+        server.
+    </p>
+    <h3>Register</h3>
+    <hr>
+    <p>
+        Register an account by clicking <strong>REGISTER</strong> on the home page. Choose a unique username and a
+        password with a length of at least eight characters.
+    </p>
+    <h3>Login</h3>
+    <hr>
+    <p>
+        Login by clicking <strong>LOGIN</strong> on the home page. Enter your username and password credentials.
+    </p>
+    <h3>Adding Recipes</h3>
+    <hr>
+    <p>
+        Click <strong>NEW</strong> to enter a new recipe. Required fields include title, ingredients, and directions.
+        Optional fields include servings, source, categories, and notes.
+
+        Check any applicable category boxes.
+
+        Ingredients and directions are both entered directly in textarea fields. Individual ingredients and direction
+        steps are entered on separate lines.
+
+        Click <strong>CREATE</strong> to finalize the new recipe.
+    </p>
+    <h3>Home Screen</h3>
+    <hr>
+    <p>
+        On the home screen, each category can be accessed directly.
+        Recipes can also be searched by either title, category, or ingredient. Use the drop-down menu to the right of
+        the search bar to switch search types.
+    </p>
+    <h3>Editing Recipes</h3>
+    <hr>
+    <p>
+        Edit a recipe by clicking on the <strong>EDIT</strong> button on an individual recipe's page.
+        The recipe's current data will be shown already filled in.
+        Any of the recipe's data can be altered and will be updated when the <strong>EDIT</strong> button is clicked.
+    </p>
+    <p>
+        Share a recipe by clicking <strong>SHARE</strong> on a recipe's edit page. A base64 encoded token will be
+        generated. This token can be shared to another Recipes server.
+    </p>
+        Download a recipe by clicking <strong>DOWNLOAD</strong> on a recipe's edit page. A plaintext version of the
+        recipe will be generated and ready for download.
+    <p>
+        Delete a recipe by clicking <strong>DELETE</strong> on a recipe's edit page. You will be prompted before the
+        recipe is permanently deleted.
+    </p>
+    <h3>Import</h3>
+    <hr>
+    <p>
+        On the home screen, click the <strong>IMPORT</strong> button to import a recipe from a base64 encoded token. The
+        recipe will be immediately available.
+    </p>
+    <h3>Export</h3>
+    <hr>
+    <p>
+        On the home screen, click the <strong>EXPORT</strong> button to export all recipes in plaintext form zipped
+        together into a single file.
+    </p>
+</div>
+{% endblock %}

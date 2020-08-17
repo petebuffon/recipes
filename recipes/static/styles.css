@@ -121,3 +121,16 @@ a:hover, a:focus {
     color: #121212;
     text-decoration: underline;
 }
+
+.help
+{
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #121212;
+}
+
+.help > hr
+{
+    background-color: #eff1f3
+}
