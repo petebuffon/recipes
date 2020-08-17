@@ -2,6 +2,7 @@
 import logging
 import os
 import time
+from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED, ZipInfo
 from io import BytesIO
 from base64 import b64encode, b64decode
@@ -18,11 +19,10 @@ from helpers import plaintext
 app = Flask(__name__)
 
 # Secret key
-app.config["SECRET_KEY"] = os.urandom(16)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-
 
 @app.after_request
 def after_request(response):
@@ -34,7 +34,7 @@ def after_request(response):
 
 
 # Load SQLite database
-db = SQL("recipes.db")
+db = SQL(Path("/config") / "recipes.db")
 db.initialize("schema.sql")
 
 
