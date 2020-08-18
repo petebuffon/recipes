@@ -55,7 +55,7 @@ def parse_paragraph(name, raw_text):
     for paragraph in raw_text.split("\r\n"):
         if paragraph:
             text.append(paragraph)
-    return json.dumps(text)
+    return dumps(text)
 
 
 class SQL:
